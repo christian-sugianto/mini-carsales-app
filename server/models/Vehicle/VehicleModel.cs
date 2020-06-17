@@ -1,6 +1,6 @@
 using System;
 
-public class Model
+public class VehicleModel
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
