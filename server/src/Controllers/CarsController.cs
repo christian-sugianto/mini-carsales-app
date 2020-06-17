@@ -82,7 +82,7 @@ namespace server
             _context.Cars.Add(car);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCar", new { id = car.Id }, car);
+            return CreatedAtAction("GetCar", new { id = Guid.NewGuid() }, car);
         }
 
         // DELETE: api/Cars/5
