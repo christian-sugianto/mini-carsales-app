@@ -2,9 +2,9 @@ using System;
 
 public class Car : Vehicle
 {
-    public Car(Guid carId, string make, string model, string engine, int doors, int wheels)
+    public Car(Guid id, string make, string model, string engine, int doors, int wheels)
     {
-        Id = carId;
+        Id = id;
         VehicleType = VehicleType.CAR;
         Make = make;
         Model = model;
