@@ -1,6 +1,6 @@
 using System;
 
-public class Vehicle
+public abstract class Vehicle
 {
     public Guid Id { get; set; }
     public VehicleType VehicleType { get; set; }
