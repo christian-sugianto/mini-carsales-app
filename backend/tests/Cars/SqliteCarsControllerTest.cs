@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -113,5 +114,55 @@ namespace Cars.Tests
                 Assert.Equal(4, car.Wheels);
             }
         }
+
+        [Fact]
+        public async void CanPostCar()
+        {
+            using (var context = new CarContext(ContextOptions))
+            {
+                var controller = new CarsController(context);
+
+                // new car
+                var newCar = new Car(Guid.NewGuid(), "Toyota", "Sonata Active", "138kW/241Nm 2.4-litre four-cylinder engine", "Sedan", 4, 4);
+
+                // update car
+                await controller.PostCar(newCar);
+
+                // get the newly added car
+                var car = (await controller.GetCar(newCar.Id)).Value;
+
+                // test updated car values
+                Assert.Equal("Toyota", car.Make);
+                Assert.Equal(VehicleType.CAR, car.VehicleType);
+                Assert.Equal("Sonata Active", car.Model);
+                Assert.Equal("138kW/241Nm 2.4-litre four-cylinder engine", car.Engine);
+                Assert.Equal("Sedan", car.BodyType);
+                Assert.Equal(4, car.Doors);
+                Assert.Equal(4, car.Wheels);
+            }
+        }
+
+        [Fact]
+        public async void CanDeleteCar()
+        {
+            using (var context = new CarContext(ContextOptions))
+            {
+                var controller = new CarsController(context);
+
+                // get car values
+                var cars = (await controller.GetCars()).Value.ToList();
+                var car = (await controller.GetCar(cars[0].Id)).Value;
+
+                // update car
+                await controller.DeleteCar(car.Id);
+
+                // get car values again using the same id
+                car = (await controller.GetCar(car.Id)).Value;
+
+                // test whether car has been deleted
+                Assert.Null(car);
+            }
+        }
+
     }
 }
