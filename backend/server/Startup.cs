@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace server
+namespace Server
 {
     public class Startup
     {
