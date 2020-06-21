@@ -2,15 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../assets/consts';
 import { Select, MenuItem, withStyles, InputBase } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const Home: React.FC = () => {
+  const history = useHistory();
   return (
     <Container>
       <HomeTitle> Mini Carsales Application</HomeTitle>
       <div style={{ marginTop: '5rem' }}>
         <CreateLabel>Create Vehicle: </CreateLabel>
         <StyledSelect input={<BootstrapInput />}>
-          <MenuItem>Create Car</MenuItem>
+          <MenuItem
+            onClick={() => {
+              history.push('/car');
+            }}
+          >
+            Create Car
+          </MenuItem>
         </StyledSelect>
       </div>
     </Container>

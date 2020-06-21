@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const CarForm: React.FC = () => {
-  return <></>
-}
+  return <></>;
+};
 
-export default CarForm
+export default CarForm;
