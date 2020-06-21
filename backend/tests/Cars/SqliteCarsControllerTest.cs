@@ -8,9 +8,9 @@ using Xunit;
 
 namespace Cars.Tests
 {
-    public class SqliteCarsControllerTest : CarsControllerTestBase
+    public class SqlServerCarsControllerTest : CarsControllerTestBase
     {
-        public SqliteCarsControllerTest()
+        public SqlServerCarsControllerTest()
             : base(
                 new DbContextOptionsBuilder<CarContext>()
                     .UseSqlite("Filename=Test.db")
@@ -43,7 +43,7 @@ namespace Cars.Tests
 
                 // test second car
                 Assert.Equal("Suzuki", cars[1].Make);
-                Assert.Equal(VehicleType.CAR, cars[1].VehicleType);
+                Assert.Equal(VehicleType.CAR, (VehicleType)cars[1].VehicleType);
                 Assert.Equal("Vitara Turbo 2020", cars[1].Model);
                 Assert.Equal("86kW/156Nm naturally-aspirated 1.6-litre petrol engine", cars[1].Engine);
                 Assert.Equal("SUV", cars[1].BodyType);
@@ -88,14 +88,7 @@ namespace Cars.Tests
                 var cars = (await controller.GetCars()).Value.ToList();
 
                 // updated car values
-                var updatedCar = new Car();
-                updatedCar.Id = cars[0].Id;
-                updatedCar.Make = "Hyundai";
-                updatedCar.Model = "Sonata Active";
-                updatedCar.Engine = "138kW/241Nm 2.4-litre four-cylinder engine";
-                updatedCar.BodyType = "Sedan";
-                updatedCar.Doors = 4;
-                updatedCar.Wheels = 4;
+                var updatedCar = new Car(cars[0].Id, "Hyundai", "Sonata Active", "138kW/241Nm 2.4-litre four-cylinder engine", "Sedan", 4, 4);
 
                 // update car
                 await controller.PutCar(cars[0].Id, updatedCar);
