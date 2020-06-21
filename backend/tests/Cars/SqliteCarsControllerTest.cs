@@ -84,17 +84,24 @@ namespace Cars.Tests
             {
                 var controller = new CarsController(context);
 
-                // get all cars
+                // get car values
                 var cars = (await controller.GetCars()).Value.ToList();
+                var car = (await controller.GetCar(cars[0].Id)).Value;
 
-                // updated car values
-                var updatedCar = new Car(cars[0].Id, "Hyundai", "Sonata Active", "138kW/241Nm 2.4-litre four-cylinder engine", "Sedan", 4, 4);
+                // update car values
+                car.Make = "Hyundai";
+                car.Model = "Sonata Active";
+                car.Engine = "138kW/241Nm 2.4-litre four-cylinder engine";
+                car.BodyType = "Sedan";
+                car.Doors = 4;
+                car.Wheels = 4;
 
                 // update car
-                await controller.PutCar(cars[0].Id, updatedCar);
+                await controller.PutCar(car.Id, car);
 
+                // get car values again
                 cars = (await controller.GetCars()).Value.ToList();
-                var car = (await controller.GetCar(cars[0].Id)).Value;
+                car = (await controller.GetCar(cars[0].Id)).Value;
 
                 // test updated car values
                 Assert.Equal("Hyundai", car.Make);
