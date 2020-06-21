@@ -16,7 +16,7 @@ namespace Models
             modelBuilder.Entity<Car>(b =>
             {
                 b.HasKey(i => i.Id);
-                b.Property(i => i.VehicleType == VehicleType.CAR).IsRequired();
+                b.Property(i => i.VehicleType).IsRequired();
                 b.Property(i => i.Make).IsRequired();
                 b.Property(i => i.Model).IsRequired();
                 b.Property(i => i.Engine).IsRequired();

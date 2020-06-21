@@ -1,14 +1,14 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Controllers;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Server.Controllers;
 using Xunit;
 
 namespace Cars.Tests
 {
-    public class SqliteCarsControllerTest : CarsControllerTest
+    public class SqliteCarsControllerTest : CarsControllerTestBase
     {
         public SqliteCarsControllerTest()
             : base(
@@ -87,8 +87,15 @@ namespace Cars.Tests
                 // get all cars
                 var cars = (await controller.GetCars()).Value.ToList();
 
-                // new values
-                var updatedCar = new Car(cars[0].Id, "Hyundai", "Sonata Active", "138kW/241Nm 2.4-litre four-cylinder engine", "Sedan", 4, 4);
+                // updated car values
+                var updatedCar = new Car();
+                updatedCar.Id = cars[0].Id;
+                updatedCar.Make = "Hyundai";
+                updatedCar.Model = "Sonata Active";
+                updatedCar.Engine = "138kW/241Nm 2.4-litre four-cylinder engine";
+                updatedCar.BodyType = "Sedan";
+                updatedCar.Doors = 4;
+                updatedCar.Wheels = 4;
 
                 // update car
                 await controller.PutCar(cars[0].Id, updatedCar);
