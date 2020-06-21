@@ -1,6 +1,9 @@
 using System;
 
-public enum VehicleType
+namespace Models
 {
-    CAR = 1
+    public enum VehicleType
+    {
+        CAR = 1
+    }
 }

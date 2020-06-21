@@ -1,19 +1,22 @@
 using System;
 
-public class Car : Vehicle
+namespace Models
 {
-    public Car(Guid id, string make, string model, string engine, int doors, int wheels)
+    public class Car : Vehicle
     {
-        Id = id;
-        VehicleType = VehicleType.CAR;
-        Make = make;
-        Model = model;
-        Engine = engine;
-        Doors = doors;
-        Wheels = wheels;
+        public Car(Guid id, string make, string model, string engine, int doors, int wheels)
+        {
+            Id = id;
+            VehicleType = VehicleType.CAR;
+            Make = make;
+            Model = model;
+            Engine = engine;
+            Doors = doors;
+            Wheels = wheels;
+        }
+        public string Engine { get; set; }
+        public string BodyType { get; set; }
+        public int Doors { get; set; }
+        public int Wheels { get; set; }
     }
-    public string Engine { get; set; }
-    public string BodyType { get; set; }
-    public int Doors { get; set; }
-    public int Wheels { get; set; }
 }
