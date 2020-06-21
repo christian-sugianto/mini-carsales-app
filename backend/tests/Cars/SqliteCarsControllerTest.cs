@@ -123,7 +123,13 @@ namespace Cars.Tests
                 var controller = new CarsController(context);
 
                 // new car
-                var newCar = new Car(Guid.NewGuid(), "Toyota", "Sonata Active", "138kW/241Nm 2.4-litre four-cylinder engine", "Sedan", 4, 4);
+                var newCar = new Car();
+                newCar.Make = "Toyota";
+                newCar.Model = "Sonata Active";
+                newCar.Engine = "138kW/241Nm 2.4-litre four-cylinder engine";
+                newCar.BodyType = "Sedan";
+                newCar.Doors = 4;
+                newCar.Wheels = 4;
 
                 // update car
                 await controller.PostCar(newCar);
