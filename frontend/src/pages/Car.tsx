@@ -2,19 +2,22 @@ import React from 'react';
 import CarFormField from '../components/CarFormField';
 import styled from 'styled-components';
 import colors from '../assets/consts';
+import StyledButton from '../components/StyledButton';
+import { useHistory } from 'react-router-dom';
+import CarForm from '../components/CarForm';
 
 const Car: React.FC = () => {
+  const history = useHistory();
   return (
     <Container>
-      <Title> Create Car</Title>
-      <form style={{ display: 'block' }}>
-        <CarFormField text="Make" />
-        <CarFormField text="Model" />
-        <CarFormField text="Engine" />
-        <CarFormField text="Body Type" />
-        <CarFormField text="Doors" />
-        <CarFormField text="Wheels" />
-      </form>
+      <div>
+        <div style={{ textAlign: 'left', margin: '1rem' }}>
+          <StyledButton text="To Home page" onClick={() => history.push('/')} />
+        </div>
+        <Title> Create Car</Title>
+      </div>
+
+      <CarForm />
     </Container>
   );
 };

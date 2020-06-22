@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <HomeTitle> Mini Carsales Application</HomeTitle>
-      <div style={{ marginTop: '5rem' }}>
+      <div>
         <CreateLabel>Create Vehicle: </CreateLabel>
         <StyledSelect input={<BootstrapInput />}>
           <MenuItem
