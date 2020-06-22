@@ -47,19 +47,21 @@ const CarForm: React.FC = () => {
         name="doors"
         register={updatedRegister}
         error={errors.doors}
-        defaultValue=""
+        defaultValue={null}
+        isNumberInputType={true}
       />
       <CarFormField
         text="Wheels"
         name="wheels"
         register={updatedRegister}
         error={errors.wheels}
-        defaultValue=""
+        defaultValue={null}
+        isNumberInputType={true}
       />
       <StyledButton
         text="Submit"
         isSubmitType={true}
-        style={{ width: '10rem', marginLeft: '7rem', marginTop: '2rem' }}
+        style={{ width: '10rem', marginLeft: '7.2rem', marginTop: '2rem' }}
       />
     </form>
   );

@@ -9,14 +9,27 @@ interface Props {
   register: any;
   defaultValue: any;
   error: any;
+  isNumberInputType?: boolean;
 }
 
-const CarFormField: React.FC<Props> = ({ text, name, register, defaultValue, error }) => {
+const CarFormField: React.FC<Props> = ({
+  text,
+  name,
+  register,
+  defaultValue,
+  error,
+  isNumberInputType,
+}) => {
   return (
     <Container>
       <div>
         <Label>{text}: </Label>
-        <StyledInput name={name} ref={register} defaultValue={defaultValue} />
+        <StyledInput
+          type={isNumberInputType ? 'number' : 'text'}
+          name={name}
+          ref={register}
+          defaultValue={defaultValue}
+        />
       </div>
       <div style={{ color: 'red', marginLeft: '-8rem', marginTop: '-1rem' }}>
         {error && error.message}
