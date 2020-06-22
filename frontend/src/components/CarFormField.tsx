@@ -46,7 +46,7 @@ const StyledInput = styled.input`
   background-color: ${colors.tertiaryColor};
   color: white;
   border: 1px solid #ced4da;
-  font-size: 16;
+  font-size: 1rem;
   width: 25rem;
   padding: 10px 12px;
   &:focus: {
