@@ -14,7 +14,7 @@ const VehicleTable: React.FC<Props> = ({ data }) => {
   });
 
   return (
-    <MaUTable style={{ width: '70%', margin: 'auto' }} {...getTableProps()}>
+    <MaUTable style={{ width: '80%', margin: 'auto' }} {...getTableProps()}>
       <TableHead>
         {headerGroups.map((headerGroup) => (
           <TableRow {...headerGroup.getHeaderGroupProps()}>

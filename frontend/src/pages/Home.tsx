@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import colors from '../assets/consts';
 import { Select, MenuItem, withStyles, InputBase } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import carsService from '../services/CarsService';
+import carsService, { CarType } from '../services/CarsService';
 import VehicleTable from '../components/VehicleTable';
 
 const Home: React.FC = () => {
   const history = useHistory();
   const [isFetched, setFetched] = useState<boolean>(false);
-  const [cars, setCars] = useState<any>([]);
+  const [cars, setCars] = useState<Array<CarType>>([]);
 
   useEffect(() => {
     async function fetchData() {

@@ -2,12 +2,18 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import CarFormField from './CarFormField';
 import StyledButton from './StyledButton';
+import carsService, { CarType } from '../services/CarsService';
+import { useHistory } from 'react-router-dom';
 
 const CarForm: React.FC = () => {
   const { register, unregister, handleSubmit, errors, setValue, getValues } = useForm<any>();
+  const history = useHistory();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    data.wheels = parseInt(data.wheels);
+    data.doors = parseInt(data.doors);
+    await carsService.postCar(data);
+    history.push('/');
   };
 
   const updatedRegister = register({ required: 'Please fill in the field' });
