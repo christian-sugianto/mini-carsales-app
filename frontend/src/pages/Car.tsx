@@ -1,5 +1,4 @@
 import React from 'react';
-import CarFormField from '../components/CarFormField';
 import styled from 'styled-components';
 import colors from '../assets/consts';
 import StyledButton from '../components/StyledButton';

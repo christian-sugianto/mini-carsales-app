@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import CarFormField from './CarFormField';
 import StyledButton from './StyledButton';
-import carsService, { CarType } from '../services/CarsService';
+import carsService from '../services/CarsService';
 import { useHistory } from 'react-router-dom';
 
 const CarForm: React.FC = () => {
-  const { register, unregister, handleSubmit, errors, setValue, getValues } = useForm<any>();
+  const { register, handleSubmit, errors } = useForm<any>();
   const history = useHistory();
 
   const onSubmit = async (data: any) => {
