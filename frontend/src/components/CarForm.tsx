@@ -10,20 +10,52 @@ const CarForm: React.FC = () => {
     console.log(data);
   };
 
-  // useEffect(() => {
-  //   register({ name: 'make', type: 'custom' }, { required: true });
-  //   register({ name: 'model', type: 'custom' }, { required: true });
-  //   register({ name: 'engine', type: 'custom' }, { required: true });
-  // }, [register]);
+  const updatedRegister = register({ required: 'Please fill in the field' });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'block', marginLeft: '-6.5rem' }}>
-      <CarFormField text="Make" name="make" register={register} defaultValue="" />
-      <CarFormField text="Model" name="model" register={register} defaultValue="" />
-      <CarFormField text="Engine" name="engine" register={register} defaultValue="" />
-      <CarFormField text="Body Type" name="bodyType" register={register} defaultValue="" />
-      <CarFormField text="Doors" name="doors" register={register} defaultValue="" />
-      <CarFormField text="Wheels" name="wheels" register={register} defaultValue="" />
+      <CarFormField
+        text="Make"
+        name="make"
+        register={updatedRegister}
+        error={errors.make}
+        defaultValue=""
+      />
+      <CarFormField
+        text="Model"
+        name="model"
+        register={updatedRegister}
+        error={errors.model}
+        defaultValue=""
+      />
+      <CarFormField
+        text="Engine"
+        name="engine"
+        register={updatedRegister}
+        error={errors.engine}
+        defaultValue=""
+      />
+      <CarFormField
+        text="Body Type"
+        name="bodyType"
+        register={updatedRegister}
+        error={errors.bodyType}
+        defaultValue=""
+      />
+      <CarFormField
+        text="Doors"
+        name="doors"
+        register={updatedRegister}
+        error={errors.doors}
+        defaultValue=""
+      />
+      <CarFormField
+        text="Wheels"
+        name="wheels"
+        register={updatedRegister}
+        error={errors.wheels}
+        defaultValue=""
+      />
       <StyledButton
         text="Submit"
         isSubmitType={true}

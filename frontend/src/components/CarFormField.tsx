@@ -8,19 +8,24 @@ interface Props {
   name: string;
   register: any;
   defaultValue: any;
+  error: any;
 }
 
-const CarFormField: React.FC<Props> = ({ text, name, register, defaultValue }) => {
+const CarFormField: React.FC<Props> = ({ text, name, register, defaultValue, error }) => {
   return (
     <Container>
-      <Label>{text}: </Label>
-      <StyledInput name={name} ref={register} defaultValue={defaultValue} />
+      <div>
+        <Label>{text}: </Label>
+        <StyledInput name={name} ref={register} defaultValue={defaultValue} />
+      </div>
+      <div style={{ color: 'red', marginLeft: '-8rem', marginTop: '-1rem' }}>
+        {error && error.message}
+      </div>
     </Container>
   );
 };
 
 const Container = styled.div`
-  margin-bottom: 1rem;
   width: 60%;
   margin: auto;
 `;
