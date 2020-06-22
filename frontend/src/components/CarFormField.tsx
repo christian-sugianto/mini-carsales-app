@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../assets/consts';
-import { fade } from '@material-ui/core';
 
 interface Props {
   text: string;
@@ -62,10 +61,6 @@ const StyledInput = styled.input`
   font-size: 1rem;
   width: 25rem;
   padding: 10px 12px;
-  &:focus: {
-    boxshadow: ${fade(colors.tertiaryColor, 0.25)} 0 0 0 0.3rem;
-    bordercolor: colors.secondaryColor;
-  }
 `;
 
 export default CarFormField;
