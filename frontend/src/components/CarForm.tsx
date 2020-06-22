@@ -10,8 +10,8 @@ const CarForm: React.FC = () => {
   const history = useHistory();
 
   const onSubmit = async (data: any) => {
-    data.wheels = parseInt(data.wheels);
-    data.doors = parseInt(data.doors);
+    data.wheels = parseInt(data.wheels, 10);
+    data.doors = parseInt(data.doors, 10);
     await carsService.postCar(data);
     history.push('/');
   };

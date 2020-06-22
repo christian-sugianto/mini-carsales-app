@@ -9,7 +9,7 @@ import VehicleTable from '../components/VehicleTable';
 const Home: React.FC = () => {
   const history = useHistory();
   const [isFetched, setFetched] = useState<boolean>(false);
-  const [cars, setCars] = useState<Array<CarType>>([]);
+  const [cars, setCars] = useState<CarType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +28,7 @@ const Home: React.FC = () => {
         <CreateLabel>Create Vehicle: </CreateLabel>
         <StyledSelect input={<BootstrapInput />}>
           <MenuItem
+            // tslint:disable:jsx-no-lambda
             onClick={() => {
               history.push('/car');
             }}

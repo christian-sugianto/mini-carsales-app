@@ -12,6 +12,7 @@ const Car: React.FC = () => {
     <Container>
       <div>
         <div style={{ textAlign: 'left', margin: '1rem' }}>
+          {/* tslint:disable:jsx-no-lambda */}
           <StyledButton text="To Home page" onClick={() => history.push('/')} />
         </div>
         <Title> Create Car</Title>

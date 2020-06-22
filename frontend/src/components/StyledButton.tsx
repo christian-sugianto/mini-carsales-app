@@ -15,7 +15,8 @@ const StyledButton: React.FC<Props> = ({ text, onClick, style, isSubmitType }) =
       style={style ? style : {}}
       variant="contained"
       color="primary"
-      onClick={() => onClick && onClick()}
+      // tslint:disable:jsx-no-lambda
+      onClick={() => (onClick ? onClick() : {})}
     >
       {text}
     </Button>

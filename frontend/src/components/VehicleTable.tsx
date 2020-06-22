@@ -16,10 +16,14 @@ const VehicleTable: React.FC<Props> = ({ data }) => {
   return (
     <MaUTable style={{ width: '80%', margin: 'auto' }} {...getTableProps()}>
       <TableHead>
-        {headerGroups.map((headerGroup) => (
-          <TableRow {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <TableCell style={{ color: colors.secondaryColor }} {...column.getHeaderProps()}>
+        {headerGroups.map((headerGroup, key) => (
+          <TableRow {...headerGroup.getHeaderGroupProps()} key={key}>
+            {headerGroup.headers.map((column, secondKey) => (
+              <TableCell
+                {...column.getHeaderProps()}
+                style={{ color: colors.secondaryColor }}
+                key={secondKey}
+              >
                 {column.render('Header')}
               </TableCell>
             ))}
@@ -27,13 +31,13 @@ const VehicleTable: React.FC<Props> = ({ data }) => {
         ))}
       </TableHead>
       <TableBody>
-        {rows.map((row, i) => {
+        {rows.map((row, key) => {
           prepareRow(row);
           return (
-            <TableRow {...row.getRowProps()}>
-              {row.cells.map((cell) => {
+            <TableRow {...row.getRowProps()} key={key}>
+              {row.cells.map((cell, secondKey) => {
                 return (
-                  <TableCell style={{ color: 'white' }} {...cell.getCellProps()}>
+                  <TableCell {...cell.getCellProps()} style={{ color: 'white' }} key={secondKey}>
                     {cell.render('Cell')}
                   </TableCell>
                 );
