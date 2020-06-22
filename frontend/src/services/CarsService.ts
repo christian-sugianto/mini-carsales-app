@@ -22,9 +22,13 @@ export interface CarType {
   make: string;
   model: string;
   engine: string;
-  bodyType: number;
+  bodyType: VehicleType;
   wheels: number;
   doors: number;
+}
+
+export enum VehicleType {
+  CAR = 1,
 }
 
 const carsService = new CarsService();

@@ -2,6 +2,7 @@ import React from 'react';
 import { useTable } from 'react-table';
 import { Table as MaUTable, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 import colors from '../assets/consts';
+import { VehicleType } from '../services/CarsService';
 
 interface Props {
   data: any;
@@ -61,6 +62,7 @@ const columns = [
       {
         Header: 'Vehicle Type',
         accessor: 'vehicleType',
+        Cell: VehicleTypeCell,
       },
       {
         Header: 'Make',
@@ -89,5 +91,9 @@ const columns = [
     ],
   },
 ];
+
+function VehicleTypeCell({ value }: any) {
+  return <>{VehicleType[value]}</>;
+}
 
 export default VehicleTable;
