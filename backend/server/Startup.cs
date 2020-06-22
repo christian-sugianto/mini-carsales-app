@@ -23,6 +23,17 @@ namespace Server
             services.AddDbContext<CarContext>(opt =>
                opt.UseInMemoryDatabase("Cars"));
             services.AddControllers();
+
+            // Add CORS policy
+            services.AddCors(options =>
+            {
+                options.AddPolicy("foo",
+                builder =>
+                {
+                    // Only for testing
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +47,8 @@ namespace Server
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("foo");
 
             app.UseAuthorization();
 

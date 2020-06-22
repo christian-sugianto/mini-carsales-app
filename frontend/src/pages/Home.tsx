@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import colors from '../assets/consts';
 import { Select, MenuItem, withStyles, InputBase } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import carsService from '../services/CarsService';
+import VehicleTable from '../components/VehicleTable';
 
 const Home: React.FC = () => {
   const history = useHistory();
+  const [isFetched, setFetched] = useState<boolean>(false);
+  const [cars, setCars] = useState<any>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      setFetched(false);
+      const response = await carsService.getCars();
+      setCars(response);
+      setFetched(true);
+    }
+    fetchData();
+  }, []);
+
   return (
     <Container>
       <HomeTitle> Mini Carsales Application</HomeTitle>
@@ -21,6 +36,7 @@ const Home: React.FC = () => {
           </MenuItem>
         </StyledSelect>
       </div>
+      {isFetched && <VehicleTable data={cars} />}
     </Container>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../assets/consts';
-import { withStyles, fade, InputBase } from '@material-ui/core';
+import { fade } from '@material-ui/core';
 
 interface Props {
   text: string;
