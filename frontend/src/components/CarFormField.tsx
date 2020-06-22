@@ -5,13 +5,16 @@ import { withStyles, fade, InputBase } from '@material-ui/core';
 
 interface Props {
   text: string;
+  name: string;
+  register: any;
+  defaultValue: any;
 }
 
-const CarFormField: React.FC<Props> = ({ text }) => {
+const CarFormField: React.FC<Props> = ({ text, name, register, defaultValue }) => {
   return (
     <Container>
       <Label>{text}: </Label>
-      <BootstrapInput />
+      <StyledInput name={name} ref={register} defaultValue={defaultValue} />
     </Container>
   );
 };
@@ -31,28 +34,20 @@ const Label = styled.div`
   text-align: right;
 `;
 
-const BootstrapInput = withStyles((theme: any) => ({
-  root: {
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
-  },
-  input: {
-    margin: '1rem 1rem',
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: colors.tertiaryColor,
-    color: 'white',
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    width: '25rem',
-    padding: '10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    '&:focus': {
-      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.3rem`,
-      borderColor: colors.secondaryColor,
-    },
-  },
-}))(InputBase);
+const StyledInput = styled.input`
+  margin: 1rem 1rem;
+  border-radius: 4;
+  position: relative;
+  background-color: ${colors.tertiaryColor};
+  color: white;
+  border: 1px solid #ced4da;
+  font-size: 16;
+  width: 25rem;
+  padding: 10px 12px;
+  &:focus: {
+    boxshadow: ${fade(colors.tertiaryColor, 0.25)} 0 0 0 0.3rem;
+    bordercolor: colors.secondaryColor;
+  }
+`;
 
 export default CarFormField;
